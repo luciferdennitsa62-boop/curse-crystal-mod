@@ -1,4 +1,9 @@
 {
   "item.cursecrystal.curse_crystal_sword": "Меч Тьмы",
-  "item.cursecrystal.curse_crystal_gem": "Кристалл Тьмы"
+  "item.cursecrystal.curse_crystal_gem": "Кристалл Тьмы",
+  "item.cursecrystal.curse_helmet": "Шлем Тьмы",
+  "item.cursecrystal.curse_chestplate": "Нагрудник Тьмы",
+  "item.cursecrystal.curse_leggings": "Поножи Тьмы",
+  "item.cursecrystal.curse_boots": "Ботинки Тьмы",
+  "structure.cursecrystal.dark_keeper": "Хранитель Тьмы"
 }

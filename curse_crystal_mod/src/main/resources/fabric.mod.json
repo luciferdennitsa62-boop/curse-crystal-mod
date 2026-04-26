@@ -1,22 +1,20 @@
 {
   "schemaVersion": 1,
   "id": "cursecrystal",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "name": "Curse Crystal Mod",
-  "description": "Меч Кристалл Проклятья — для Herobrin_Million",
+  "description": "Меч Тьмы, Броня Тьмы и Данж Хранитель Тьмы",
   "authors": ["Herobrin_Million"],
-  "contact": {},
   "license": "MIT",
-  "icon": "assets/cursecrystal/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": ["com.herobrin.cursecrystal.CurseCrystalMod"]
   },
   "mixins": ["cursecrystal.mixins.json"],
   "depends": {
-    "fabricloader": ">=0.14.0",
+    "fabricloader": ">=0.16.0",
     "fabric-api": "*",
-    "minecraft": "~1.20",
-    "java": ">=17"
+    "minecraft": "~1.21.4",
+    "java": ">=21"
   }
 }

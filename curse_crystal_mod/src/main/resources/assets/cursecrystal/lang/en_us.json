@@ -1,4 +1,8 @@
 {
   "item.cursecrystal.curse_crystal_sword": "Sword of Darkness",
-  "item.cursecrystal.curse_crystal_gem": "Dark Crystal"
+  "item.cursecrystal.curse_crystal_gem": "Dark Crystal",
+  "item.cursecrystal.curse_helmet": "Helmet of Darkness",
+  "item.cursecrystal.curse_chestplate": "Chestplate of Darkness",
+  "item.cursecrystal.curse_leggings": "Leggings of Darkness",
+  "item.cursecrystal.curse_boots": "Boots of Darkness"
 }
