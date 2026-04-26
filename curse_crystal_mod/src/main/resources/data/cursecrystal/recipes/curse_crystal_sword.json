@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ABC",
+    "DEF",
+    "GHA"
+  ],
+  "key": {
+    "A": { "item": "minecraft:obsidian" },
+    "B": { "item": "minecraft:wither_skeleton_skull" },
+    "C": { "item": "cursecrystal:curse_crystal_gem" },
+    "D": { "item": "minecraft:nether_star" },
+    "E": { "item": "minecraft:ender_eye" },
+    "F": { "item": "minecraft:totem_of_undying" },
+    "G": { "item": "minecraft:blaze_rod" },
+    "H": { "item": "minecraft:end_crystal" }
+  },
+  "result": {
+    "item": "cursecrystal:curse_crystal_sword",
+    "count": 1
+  }
+}
