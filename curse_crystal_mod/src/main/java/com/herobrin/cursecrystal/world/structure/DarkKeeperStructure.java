@@ -376,31 +376,61 @@ public class DarkKeeperStructure {
     private static void fillChestRecipeMap(ServerWorld world, BlockPos pos, Random rand) {
         if (!(world.getBlockEntity(pos) instanceof ChestBlockEntity chest)) return;
 
-        // Карта-рецепт — заполненная карта с описанием
-        ItemStack recipeMap = new ItemStack(Items.FILLED_MAP);
-        NbtCompound nbt = recipeMap.getOrCreateNbt();
-        nbt.putInt("map", 999);
-        recipeMap.setCustomName(Text.literal("★ Рецепт: Меч Тьмы ★").formatted(Formatting.DARK_PURPLE, Formatting.BOLD));
-
-        // Книга с рецептом (описание крафта)
         ItemStack recipeBook = new ItemStack(Items.WRITTEN_BOOK);
         NbtCompound bookNbt = recipeBook.getOrCreateNbt();
-        bookNbt.putString("title", "Рецепт Меча Тьмы");
-        bookNbt.putString("author", "Хранитель Тьмы");
+        bookNbt.putString("title", "Tome of Darkness");
+        bookNbt.putString("author", "Dark Keeper");
         net.minecraft.nbt.NbtList pages = new net.minecraft.nbt.NbtList();
+
+        // Стр 1 — заголовок
         pages.add(net.minecraft.nbt.NbtString.of(
-            Text.Serialization.toJsonString(
-                Text.literal("=== МЕCH ТЬМЫ ===\n\nКрафт 3x3:\n\n[Обс][Череп][Крист]\n[Звезда][Глаз][Тотем]\n[Стержень][КрЭдж][Обс]\n\nОбс = Обсидиан\nЧереп = Череп вилтера\nКрист = Кристалл Тьмы\nЗвезда = Звезда Незера\nГлаз = Глаз Края\nТотем = Тотем бессмертия\nКрЭдж = Кристалл Края\n\nБроню нельзя скрафтить.\nИщи на стойках!"),
-                world.getRegistryManager()
-            )
+            "[\"\"," +
+            "{\"text\":\"=== TOME OF DARKNESS ===\\n\\n\",\"bold\":true,\"color\":\"dark_purple\"}," +
+            "{\"text\":\"The blade of eternal darkness awaits those worthy enough to forge it.\",\"color\":\"dark_gray\"}]"
         ));
+        // Стр 2 — верхний ряд
+        pages.add(net.minecraft.nbt.NbtString.of(
+            "[\"\"," +
+            "{\"text\":\"SWORD OF DARKNESS\\n\\n\",\"bold\":true,\"color\":\"dark_purple\"}," +
+            "{\"text\":\"TOP ROW:\\n\",\"bold\":true,\"color\":\"dark_gray\"}," +
+            "{\"text\":\"[Obsidian] [Wither Skull] [Dark Crystal]\\n\\n\",\"color\":\"gray\"}," +
+            "{\"text\":\"Obsidian\",\"color\":\"dark_gray\"},{\"text\":\" = minecraft:obsidian\\n\",\"color\":\"black\"}," +
+            "{\"text\":\"Wither Skull\",\"color\":\"dark_gray\"},{\"text\":\" = wither_skeleton_skull\\n\",\"color\":\"black\"}," +
+            "{\"text\":\"Dark Crystal\",\"color\":\"dark_purple\"},{\"text\":\" = cursecrystal:curse_crystal_gem\",\"color\":\"black\"}]"
+        ));
+        // Стр 3 — средний ряд
+        pages.add(net.minecraft.nbt.NbtString.of(
+            "[\"\"," +
+            "{\"text\":\"MIDDLE ROW:\\n\",\"bold\":true,\"color\":\"dark_gray\"}," +
+            "{\"text\":\"[Nether Star] [Ender Eye] [Totem]\\n\\n\",\"color\":\"gray\"}," +
+            "{\"text\":\"Nether Star\",\"color\":\"yellow\"},{\"text\":\" = minecraft:nether_star\\n\",\"color\":\"black\"}," +
+            "{\"text\":\"Ender Eye\",\"color\":\"green\"},{\"text\":\" = minecraft:ender_eye\\n\",\"color\":\"black\"}," +
+            "{\"text\":\"Totem\",\"color\":\"gold\"},{\"text\":\" = minecraft:totem_of_undying\",\"color\":\"black\"}]"
+        ));
+        // Стр 4 — нижний ряд
+        pages.add(net.minecraft.nbt.NbtString.of(
+            "[\"\"," +
+            "{\"text\":\"BOTTOM ROW:\\n\",\"bold\":true,\"color\":\"dark_gray\"}," +
+            "{\"text\":\"[Blaze Rod] [End Crystal] [Obsidian]\\n\\n\",\"color\":\"gray\"}," +
+            "{\"text\":\"Blaze Rod\",\"color\":\"gold\"},{\"text\":\" = minecraft:blaze_rod\\n\",\"color\":\"black\"}," +
+            "{\"text\":\"End Crystal\",\"color\":\"aqua\"},{\"text\":\" = minecraft:end_crystal\\n\",\"color\":\"black\"}," +
+            "{\"text\":\"Obsidian\",\"color\":\"dark_gray\"},{\"text\":\" = minecraft:obsidian\",\"color\":\"black\"}]"
+        ));
+        // Стр 5 — броня
+        pages.add(net.minecraft.nbt.NbtString.of(
+            "[\"\"," +
+            "{\"text\":\"ARMOR OF DARKNESS\\n\\n\",\"bold\":true,\"color\":\"dark_purple\"}," +
+            "{\"text\":\"The armor cannot be crafted.\\n\\nIt rests on the armor stands in this very chamber.\\n\\n\",\"color\":\"dark_gray\"}," +
+            "{\"text\":\"Take it if you dare...\",\"bold\":true,\"color\":\"dark_red\"}]"
+        ));
+
         bookNbt.put("pages", pages);
         recipeBook.setNbt(bookNbt);
 
-        chest.setStack(0, recipeMap);
-        chest.setStack(1, recipeBook);
-        chest.setStack(2, new ItemStack(ModItems.CURSE_CRYSTAL_GEM, rand.nextBetween(10, 20)));
-        chest.setStack(3, new ItemStack(Items.NETHER_STAR, rand.nextBetween(1, 2)));
-        chest.setStack(4, new ItemStack(Items.ENCHANTED_GOLDEN_APPLE, 1));
+        chest.setStack(0, recipeBook);
+        chest.setStack(1, new ItemStack(ModItems.CURSE_CRYSTAL_GEM, rand.nextBetween(10, 20)));
+        chest.setStack(2, new ItemStack(Items.NETHER_STAR, rand.nextBetween(1, 2)));
+        chest.setStack(3, new ItemStack(Items.ENCHANTED_GOLDEN_APPLE, 1));
+        chest.setStack(4, new ItemStack(Items.DIAMOND, rand.nextBetween(3, 7)));
     }
 }
